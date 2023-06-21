@@ -9,9 +9,14 @@ router.post('/', async (req, res) => {
     });
 
     // TODO: save the user id, username, and loggedIn status to the req.session
+    req.session.save(() => {
+      req.session.user_id = newUser.id;
+      req.session.loggedIn = true;
+      req.session.username = newUser.username;
+      
+      res.json(newUser);
+    });
 
-
-    res.json(newUser);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -38,9 +43,14 @@ router.post('/login', async (req, res) => {
     }
 
     // TODO: save the user id, username, and loggedIn status to the req.session
+    req.session.save(() => {
+      req.session.user_id = user.id;
+      req.session.loggedIn = true;
+      req.session.username = user.username;
+      
+      res.json({ user, message: 'You are now logged in!' });
+    });
 
-
-    res.json({ user, message: 'You are now logged in!' });
   } catch (err) {
     res.status(400).json({ message: 'No user account found!' });
   }

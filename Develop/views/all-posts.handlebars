@@ -1,0 +1,20 @@
+<div>
+  <div>
+    <h3>
+      This is a Post
+    </h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus eum
+      quos libero doloribus! Veritatis at pariatur quos suscipit, omnis cum
+      facere accusamus quis ipsa excepturi ab debitis accusantium illum eveniet!</p>
+  </div>
+  {{#each posts as |post|}}
+    <div>
+    <h3>
+      {{post.title}}
+    </h3>
+    <p>
+      {{post.body}}
+    </p>
+  </div>
+  {{/each}}
+</div>
